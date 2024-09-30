@@ -6,13 +6,21 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct LocationsView: View {
+	
+	@EnvironmentObject private var vm : LocationsViewModel
+	
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+		ZStack {
+			Map(position: $vm.mapPosition)
+				.ignoresSafeArea()
+		}
+	
     }
 }
 
 #Preview {
-    LocationsView()
-}
+		LocationsView().environmentObject(LocationsViewModel())
+	}
